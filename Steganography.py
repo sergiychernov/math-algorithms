@@ -23,10 +23,10 @@ def hide_text_in_image(b, text):
     p2 = 10
     c1 = 0
     c2 = n
-    msg = text_to_bit_array(text[:512].ljust(512-len(text)))
+    msg = text_to_bit_array(text[:x].ljust(x-len(text)))
     print msg
 
-    for index in range(0, 512):
+    for index in range(0, x):
         r1 = (n * index) % x
         r2 = r1 + n
         cb = b[r1:r2, c1:c2]
@@ -68,7 +68,7 @@ def extract_text_from_image(b):
     c2 = n
     msg = []
     p = 60
-    for index in range(0, 512):
+    for index in range(0, x):
         r1 = (n * index) % x
         r2 = r1 + n
         cb = b[r1:r2, c1:c2]
