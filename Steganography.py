@@ -24,8 +24,10 @@ def hide_text_in_image(b, text):
             cb = b[r1:r2, c1:c2]
 
             u, s, v = np.linalg.svd(cb)
-            w1 = v[u1, v1]
-            w2 = v[u2, v2]
+            s = np.diag(s)
+
+            w1 = s[u1, v1]
+            w2 = s[u2, v2]
 
             if msg[index] == 0:
                 if w1 - w2 != p1:
@@ -35,10 +37,10 @@ def hide_text_in_image(b, text):
                 if w1 - w2 != p2:
                     w1 = p2 + w2
 
-            v[u1, v1] = w1
-            v[u2, v2] = w2
+            s[u1, v1] = w1
+            s[u2, v2] = w2
 
-            b[r1:r2, c1:c2] = np.dot(u, np.dot(np.diag(s), v))
+            b[r1:r2, c1:c2] = np.dot(u, np.dot(s, v))
             if r2 == x:
                 c1 += n
                 c2 += n
@@ -47,6 +49,6 @@ def hide_text_in_image(b, text):
 img = cv2.imread('images/lena512color.tiff')
 B, g, r = cv2.split(img)
 
-hide_text_in_image(B, 'here will be some long long text or even longer than you imagine')
+hide_text_in_image(B, 'here will be some long long text or even longer than you could imagine')
 
 cv2.imwrite('images/lena512_processed.tiff', cv2.merge((B, g, r)))
