@@ -1,53 +1,52 @@
 import cv2
-import numpy
+import numpy as np
 
-img = cv2.imread('images/lena512.bmp')
-B, G, R = cv2.split(img)
 
-X = len(B)
-Y = len(B[0])
-N = 8
-Nc = X * Y / (N ^ 2)
-v1 = 2
-v2 = 3
-u1 = 2
-u2 = 3
-P1 = 50
-P2 = 10
-c1 = 0
-c2 = N
-s = 'here will be some long long text or even longer than you imagine'
-M = map(int, ''.join([bin(ord(i)).lstrip('0b').rjust(8, '0') for i in s]))
+def hide_text_in_image(b, text):
+    x = len(b)
+    y = len(b[0])
+    n = 8
+    nc = x * y / (n ^ 2)
+    v1 = 2
+    v2 = 3
+    u1 = 2
+    u2 = 3
+    p1 = 50
+    p2 = 10
+    c1 = 0
+    c2 = n
+    msg = map(int, ''.join([bin(ord(i)).lstrip('0b').rjust(8, '0') for i in text]))
 
-Lm = len(M)
-print Lm
-Tmp = [Nc]
+    for index in range(0, min(len(msg), nc)):
+        r1 = (n * (index - 1)) % x
+        r2 = r1 + n
+        if c1 <= y and c2 <= y and r1 <= x and r2 <= x and c1 >= 0 and c2 > 0 and r1 > 0 and r2 > 0:
+            cb = b[r1:r2, c1:c2]
 
-for b in range(0, Lm):
-    r1 = (N * (b - 1)) % X
-    r2 = r1 + N
-    if c1 <= Y and c2 <= Y and r1 <= X and r2 <= X and c1 >= 0 and c2 > 0 and r1 > 0 and r2 > 0:
-        Cb = B[r1:r2, c1:c2]
+            u, s, v = np.linalg.svd(cb)
+            w1 = v[u1, v1]
+            w2 = v[u2, v2]
 
-        U, S, V = numpy.linalg.svd(Cb)
-        w1 = V[u1, v1]
-        w2 = V[u2, v2]
+            if msg[index] == 0:
+                if w1 - w2 != p1:
+                    w1 = p1 + w2
 
-        if M[b] == 0:
-            if w1 - w2 != P1:
-                w1 = P1 + w2
+            if msg[index] == 1:
+                if w1 - w2 != p2:
+                    w1 = p2 + w2
 
-        if M[b] == 1:
-            if w1 - w2 != P2:
-                w1 = P2 + w2
-        V[u1, v1] = w1
-        V[u2, v2] = w2
-        print b
-        B[r1:r2, c1:c2] = numpy.dot(U, numpy.dot(S, V.transpose()))
-        if r2 == X:
-            c1 += N
-            c2 += N
+            v[u1, v1] = w1
+            v[u2, v2] = w2
 
-img1 = cv2.merge((R, G, B))
-cv2.imwrite('images/lena512_processed.bmp', img1)
-print str(X) + 'x' + str(Y)
+            b[r1:r2, c1:c2] = np.dot(u, np.dot(np.diag(s), v))
+            if r2 == x:
+                c1 += n
+                c2 += n
+
+
+img = cv2.imread('images/lena512color.tiff')
+B, g, r = cv2.split(img)
+
+hide_text_in_image(B, 'here will be some long long text or even longer than you imagine')
+
+cv2.imwrite('images/lena512_processed.tiff', cv2.merge((B, g, r)))
