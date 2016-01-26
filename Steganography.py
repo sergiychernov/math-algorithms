@@ -1,5 +1,5 @@
-import cv2
-import numpy as np
+import glob, cv2, numpy as np
+from difflib import SequenceMatcher
 
 
 def text_to_bit_array(text):
@@ -23,8 +23,7 @@ def hide_text_in_image(b, text):
     p2 = 10
     c1 = 0
     c2 = n
-    msg = text_to_bit_array(text[:x].ljust(x-len(text)))
-    print msg
+    msg = text_to_bit_array(text[:x].ljust(x - len(text)))
 
     for index in range(0, x):
         r1 = (n * index) % x
@@ -52,14 +51,14 @@ def hide_text_in_image(b, text):
         if r2 == x:
             c1 += n
             c2 += n
-    return b
+    return
 
 
 def extract_text_from_image(b):
     x = len(b)
     y = len(b[0])
     n = 8
-    nc = x * y / (n ^ 2)
+    nc = x * y / (n ** 2)
     v1 = 1
     v2 = 2
     u1 = 1
@@ -84,17 +83,28 @@ def extract_text_from_image(b):
             c1 += n
             c2 += n
 
-    print msg
     return bit_array_to_text(msg)
 
 
-img = cv2.imread('images/lena512color.tiff')
-B, g, r = cv2.split(img)
+def similar(a, b):
+    return SequenceMatcher(None, a, b).ratio()
 
-aa = hide_text_in_image(B, 'now this shit supports text any length if too much it will be truncated')
 
-cv2.imwrite('images/lena512_processed.tiff', cv2.merge((B, g, r)))
+if __name__ == '__main__':
+    for fileName in glob.glob("images/*.tiff"):
+        processedFileName = fileName.replace('.tiff', '_processed.tiff').replace('images\\', 'images\\processed\\')
 
-img1 = cv2.imread('images/lena512_processed.tiff')
-B1, g1, r11 = cv2.split(img1)
-print extract_text_from_image(B1)
+        img = cv2.imread(fileName)
+        B, g, r = cv2.split(img)
+
+        message = 'now this shit supports text any length if too much it will be truncated'
+
+        hide_text_in_image(B, message)
+
+        cv2.imwrite(processedFileName, cv2.merge((B, g, r)))
+
+        img1 = cv2.imread(processedFileName)
+
+        result = extract_text_from_image(cv2.split(img1)[0])
+
+        print '{0:<5}{1:<20}{2:>5.2f}%'.format(len(B), fileName.replace('images\\', ''), similar(message, result) * 100)
