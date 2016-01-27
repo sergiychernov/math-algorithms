@@ -14,7 +14,7 @@ def hide_text_in_image(b, text):
     x = len(b)
     y = len(b[0])
     n = 8
-    nc = x * y / (n ^ 2)
+    nc = x * y / (n ** 2)
     v1 = 2
     v2 = 3
     u1 = 2
@@ -23,11 +23,12 @@ def hide_text_in_image(b, text):
     p2 = 10
     c1 = 0
     c2 = n
-    msg = text_to_bit_array(text[:x].ljust(x - len(text)))
+    msg = text_to_bit_array(text[:nc].ljust(nc - len(text)))
 
-    for index in range(0, x):
+    for index in range(0, nc):
         r1 = (n * index) % x
         r2 = r1 + n
+
         cb = b[r1:r2, c1:c2]
 
         u, s, v = np.linalg.svd(cb)
@@ -67,7 +68,7 @@ def extract_text_from_image(b):
     c2 = n
     msg = []
     p = 60
-    for index in range(0, x):
+    for index in range(0, nc):
         r1 = (n * index) % x
         r2 = r1 + n
         cb = b[r1:r2, c1:c2]
@@ -105,6 +106,6 @@ if __name__ == '__main__':
 
         img1 = cv2.imread(processedFileName)
 
-        result = extract_text_from_image(cv2.split(img1)[0])
+        result = extract_text_from_image(cv2.split(img1)[0])[:len(message)]
 
         print '{0:<5}{1:<20}{2:>5.2f}%'.format(len(B), fileName.replace('images\\', ''), similar(message, result) * 100)
