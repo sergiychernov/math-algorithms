@@ -2,51 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e795afb-f807-46c3-af0d-687aa7c061da" name="Default" comment="put text into image using Singular Value Decomposition&#10;">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Steganography.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/4.1.01.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/4.1.02.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/4.1.03.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/4.1.04.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/4.1.05.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/4.1.06.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/4.1.07.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/4.1.08.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/4.2.01.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/4.2.02.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/4.2.03.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/4.2.04.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/4.2.05.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/4.2.06.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/4.2.07.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/5.1.09.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/5.1.10.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/5.1.11.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/5.1.12.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/5.1.13.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/5.1.14.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/5.2.08.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/5.2.09.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/5.2.10.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/5.3.01.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/5.3.02.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/7.1.01.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/7.1.02.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/7.1.03.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/7.1.04.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/7.1.05.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/7.1.06.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/7.1.07.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/7.1.08.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/7.1.09.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/7.1.10.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/7.2.01.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/boat.512.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/elaine.512.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/gray21.512.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/house.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/numbers.512.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/ruler.512.tiff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/testpat.1k.tiff" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="math-algorithms.iws" />
@@ -385,7 +340,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17916666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
